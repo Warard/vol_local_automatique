@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
+    
+    <!-- CSS and FONTS links -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Scripts -->
+    <script src="api.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.js" integrity="sha512-rn5JpU98RtYVMtZeQJfzmJ67rl4/dqDpGZ393z5f9WMYHXEU4+8Stm/PQAma2gbsLbpClmUHJzT0DaG32OmEyQ==" crossorigin="anonymous"></script>
+    <script src="pdf.js"></script>
+
+    <!-- Title -->
     <title>Test API METAR/TAF</title>
 </head>
 <body>
@@ -13,9 +25,30 @@
     
     <!-- <script src="https://api.checkwx.com/widget?key=c4bb76ba2c634e678989a5d2a3" type="text/javascript"></script> -->
 
+    <h1 id="station_OACI"></h1>
 
-    <p id="wind_direction"></p>
-    <p id="wind_speed"></p>
+    <span>METAR :</span>
+    <span id="metar"></span>
+    <br>
+
+    <span>Vent :</span>
+    <span id="wind_direction"></span>
+    <span id="wind_speed"></span>
+    <br>
+
+    <span>Vent :</span>
+    <span id="wind_direction"></span>
+    <span id="wind_speed"></span>
+    <br>
+
+    <span>Vent :</span>
+    <span id="wind_direction"></span>
+    <span id="wind_speed"></span>
+    <br>
+    
+    <br><br>
+
+    <button onclick="download_pdf()">Télécharger le PDF</button>
 
 </body>
 </html>
