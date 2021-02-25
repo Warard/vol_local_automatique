@@ -9,3 +9,25 @@ html
 {
     font-weight: bold;
 }
+
+#weather 
+{
+    display: none;
+}
+
+#weather_maps
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+#weather_maps > img
+{
+    display: block;
+    margin: 1%;
+    width: 50%;
+    height: 50%;
+}

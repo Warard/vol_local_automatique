@@ -40,38 +40,50 @@
             <h2 id="station_name" class="text-center mb-4"></h2>
         </header>
 
-        <!-- Metar -->
-        <span class="title_before_data">METAR :</span>
-        <span id="metar"></span>
-        <br><br>
 
-        <!-- Wind -->
-        <span class="title_before_data">Vent :</span>
-        <span id="wind_direction"></span>
-        <span id="wind_speed"></span>
-        <br>
+        <!-- ----Weather---- -->
+        <div id="weather">
+            <!-- Metar -->
+            <span class="title_before_data">METAR :</span>
+            <span id="metar"></span>
+            <br><br>
+            
+            <!-- Wind -->
+            <span class="title_before_data">Vent :</span>
+            <span id="wind_direction"></span>
+            <span id="wind_speed"></span>
+            <br>
+            
+            <!-- Clouds ceiling -->
+            <span class="title_before_data">Nébulosité :</span>
+            <span id="clouds"></span>
+            <span id="clouds_translated"></span>
+            <br>
 
-        <!-- Clouds ceiling -->
-        <span class="title_before_data">Nébulosité :</span>
-        <span id="clouds"></span>
-        <span id="clouds_translated"></span>
-        <br>
+            <!-- Temperatures -->
+            <span class="title_before_data">Température/rosée :</span>
+            <span id="temp"></span>
+            <span id="dew"> / </span>
+            <br>
 
-        <!-- Temperatures -->
-        <span class="title_before_data">Température/rosée :</span>
-        <span id="temp"></span>
-        <span id="dew"> / </span>
-        <br>
+            <!-- Atmospheric pressure -->
+            <span class="title_before_data">Pression :</span>
+            <span id="pressure"></span>
+            <br>
+            
+            <br><br>
 
-        <!-- Atmospheric pressure -->
-        <span class="title_before_data">Pression :</span>
-        <span id="pressure"></span>
-        <br>
-        
-        <br><br>
+            <h3 id="weather_map_date" class="text-center"></h3><br>
+            <div id="weather_maps">
+                <img id="weather_front" src="https://aviation.meteo.fr/affiche_image.php?" alt="carte des fronts Europe">
+                <img id="temsi" src="https://aviation.meteo.fr/affiche_image.php?" alt="carte temsi Europe">
+                <img id="wintem" src="https://aviation.meteo.fr/affiche_image.php?" alt="Wintem France">
+            </div>
+            <br><br>
 
-        <!-- Download PDF button -->
-        <button type="button" class="btn btn-success" onclick="download_pdf()">Télécharger PDF</button>
+            <!-- Download PDF button -->
+            <button type="button" class="btn btn-success" onclick="download_pdf()">Télécharger PDF</button>
+        </div>
     </div>
 
 </body>
