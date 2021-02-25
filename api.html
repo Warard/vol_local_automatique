@@ -8,6 +8,7 @@
     
     <!-- CSS and FONTS links -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Scripts -->
     <script src="api.js"></script>
@@ -20,35 +21,58 @@
     <title>Test API METAR/TAF</title>
 </head>
 <body>
-    
     <div class="checkwx-container" data-type="METAR" data-station="KJFK" id=""></div>
-    
-    <!-- <script src="https://api.checkwx.com/widget?key=c4bb76ba2c634e678989a5d2a3" type="text/javascript"></script> -->
-
-    <h1 id="station_OACI"></h1>
-
-    <span>METAR :</span>
-    <span id="metar"></span>
-    <br>
-
-    <span>Vent :</span>
-    <span id="wind_direction"></span>
-    <span id="wind_speed"></span>
-    <br>
-
-    <span>Vent :</span>
-    <span id="wind_direction"></span>
-    <span id="wind_speed"></span>
-    <br>
-
-    <span>Vent :</span>
-    <span id="wind_direction"></span>
-    <span id="wind_speed"></span>
-    <br>
-    
     <br><br>
+    
+    <div class="container">
+        <!-- Airport choice -->
+        <form>
+            <div class="form-group">
+              <label for="arpt_choice">Rentrer le code OACI de l'aéroport</label>
+              <input class="form-control" placeholder="code OACI" id="arpt_choice">
+            </div>
+            <button class="btn btn-primary" type="button" onclick="generate_flight()">Rechercher</button>
+        </form>
+        
+        <!-- header : Upper Title -->
+        <header>
+            <h1 id="station_OACI" class="text-center mt-4 mb-4"></h1>
+            <h2 id="station_name" class="text-center mb-4"></h2>
+        </header>
 
-    <button onclick="download_pdf()">Télécharger le PDF</button>
+        <!-- Metar -->
+        <span class="title_before_data">METAR :</span>
+        <span id="metar"></span>
+        <br><br>
+
+        <!-- Wind -->
+        <span class="title_before_data">Vent :</span>
+        <span id="wind_direction"></span>
+        <span id="wind_speed"></span>
+        <br>
+
+        <!-- Clouds ceiling -->
+        <span class="title_before_data">Nébulosité :</span>
+        <span id="clouds"></span>
+        <span id="clouds_translated"></span>
+        <br>
+
+        <!-- Temperatures -->
+        <span class="title_before_data">Température/rosée :</span>
+        <span id="temp"></span>
+        <span id="dew"> / </span>
+        <br>
+
+        <!-- Atmospheric pressure -->
+        <span class="title_before_data">Pression :</span>
+        <span id="pressure"></span>
+        <br>
+        
+        <br><br>
+
+        <!-- Download PDF button -->
+        <button type="button" class="btn btn-success" onclick="download_pdf()">Télécharger PDF</button>
+    </div>
 
 </body>
 </html>

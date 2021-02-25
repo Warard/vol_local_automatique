@@ -1,6 +1,15 @@
-/*
-    -----API----- 
-*/
+function generate_flight() {
+    var data = document.getElementById("arpt_choice").value
+    if(data.length == 4) {
+        console.log('ok')
+    } else {
+        alert('Le code de l\'aéroport doit contenir 4 lettres/chiffres');
+    }
+}
+
+
+
+/*-----API-----*/
 
 
 // Api request variable
@@ -13,7 +22,7 @@ xhttp.onreadystatechange = function() {
 
     // Stock the JSON table received
     JSON_data = xhttp.responseText;
-    console.log(JSON_data);    
+        // console.log(JSON_data);    
 
     function read_data(json_file=JSON_data, path_to_data="data") {
     /* 
@@ -29,52 +38,63 @@ xhttp.onreadystatechange = function() {
         return data[0]
     }
 
-    function write_html(tag, content, method='id') {
+    function write_html(tag, content, method='id', add=false) {
     /* 
     Write a content in api.html by getting it's tag (id, or class)
     ARGUMENTS : 
         tag : name or the tag or the class used to localize the HTML element
+        content : content to add in the html object
         method : Choose if the html element should be localised by getting its class name or its id name
-
+        add : Shloud content be added to the previous html content, or replace it ? add=false will replace the content, else it will be add to the previous html content
     RETURN : 
         content : content which should be written in the html element get by the previous tag and method  
     */
         if(method == 'id') {
-            document.getElementById(tag).innerHTML = content;
+            if(add) {
+                document.getElementById(tag).innerHTML += content;
+            } else {
+                document.getElementById(tag).innerHTML = content;
+            }
         }
 
         if(method == 'class') {
-            document.getElementsByClassName(tag).innerHTML = content;
+            if(add) {
+                document.getElementsByClassName(tag).innerHTML += content;
+            } else {
+                document.getElementsByClassName(tag).innerHTML = content;
+            }        
         }
     }
 
-
-
-
-
-    /*
-        -----HTML WRITTING----- 
-    */
+    /* -----HTML WRITTING----- */
     
     // Station name
-    write_html('station_OACI', read_data().icao, 'id');
+    write_html('station_OACI', read_data().icao);
+    write_html('station_name', read_data().station.name);
 
     // metar
-    write_html('metar', read_data().raw_text, 'id');
+    write_html('metar', read_data().raw_text);
 
     // wind
-    write_html('wind_direction', read_data().wind.degrees + ' /', 'id');
-    write_html('wind_speed', read_data().wind.speed_kts + 'kts', 'id');
+    write_html('wind_direction', read_data().wind.degrees + '° /');
+    write_html('wind_speed', read_data().wind.speed_kts + 'kts');
+
+    // clouds
+    write_html('clouds', read_data().clouds[0].code);
+    write_html('clouds_translated', read_data().clouds[0].text);
+
+    // temperatures
+    write_html('temp', read_data().temperature.celsius + "°C", method="id", add="true");
+    write_html('dew', read_data().dewpoint.celsius + "°C", method="id", add=true);
+
+    // atmospheric pressure
+    write_html('pressure', read_data().barometer.hpa + " hpa");
   }
 };
 
 
 
-
-
-
-
-xhttp.open("GET", "https://api.checkwx.com/metar/LFPG/decoded?pretty=1", true);
+xhttp.open("GET", "https://api.checkwx.com/metar/OMDB/decoded?pretty=1", true);
 xhttp.setRequestHeader('X-API-Key', 'c4bb76ba2c634e678989a5d2a3');
 
 xhttp.send();
